@@ -119,13 +119,45 @@ public class Sort {
     }
     
 
-    public int [] quickSort(int [] array){
+    public int [] quickSort(int [] array) {
+        final long startTime = System.currentTimeMillis();
         int [] list = array;
-        //implement here
-        
-        
+        qSort(list, 0, list.length - 1);
 
+        final long endTime = System.currentTimeMillis();
+        final long executionTime = endTime - startTime;
+        this.executionTime = executionTime;
         return list;
+    }
+
+    private void qSort(int [] arr, int begin, int end) {
+        if (begin < end) {
+            int partition = partition(arr, begin, end);
+
+            qSort(arr, begin, partition - 1);
+            qSort(arr, partition + 1, end);
+        }
+    }
+
+    private int partition(int [] arr, int begin, int end) {
+        int pivot = arr[end];
+        int pivCheck = begin - 1;
+        int temp;
+
+        for (int i = begin; i < end; i++) {
+            if (arr[i] <= pivot) {
+                pivCheck++;
+
+                temp = arr[pivCheck];
+                arr[pivCheck] = arr[i];
+                arr[i] = temp;
+            }
+        }
+        temp = arr[pivCheck + 1];
+        arr[pivCheck + 1] =  arr[end];
+        arr[end] = temp;
+
+        return pivCheck + 1;
     }
     
     public int [] heapSort(int [] array){

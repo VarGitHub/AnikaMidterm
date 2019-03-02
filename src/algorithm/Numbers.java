@@ -87,6 +87,18 @@ public class Numbers {
 		randomize (num, n);
 
 
+		//////////// Heap Sort
+		algo.heapSort(num);
+		long heapSortExecutionTime = algo.executionTime;
+		System.out.println("Total Execution Time of " + num.length + " numbers in Heap Sort take: " + heapSortExecutionTime + " milli sec");
+
+		connectToSqlDB.insertDataFromArrayToSqlTable(num, "heap_sort", "SortingNumbers");
+		List<String> heap_numbers = connectToSqlDB.readDataBase("heap_sort", "SortingNumbers");
+		printValue(heap_numbers);
+		n = num.length;
+		randomize (num, n);
+
+
 
 
 

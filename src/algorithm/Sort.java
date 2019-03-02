@@ -28,6 +28,7 @@ public class Sort {
         final long endTime = System.currentTimeMillis();
         final long executionTime = endTime - startTime;
         this.executionTime = executionTime;
+
         return list;
     }
 
@@ -47,6 +48,7 @@ public class Sort {
         final long endTime = System.currentTimeMillis();
         final long executionTime = endTime - startTime;
         this.executionTime = executionTime;
+
         return list;
     }
 
@@ -65,9 +67,9 @@ public class Sort {
         final long endTime = System.currentTimeMillis();
         final long executionTime = endTime - startTime;
         this.executionTime = executionTime;
+
         return list;
     }
-    
 
     public int [] mergeSort(int [] array) {
         final long startTime = System.currentTimeMillis();
@@ -78,6 +80,7 @@ public class Sort {
         final long endTime = System.currentTimeMillis();
         final long executionTime = endTime - startTime;
         this.executionTime = executionTime;
+
         return list;
     }
 
@@ -117,7 +120,6 @@ public class Sort {
         while(rightIndex < right)
             arr[origIndex++] = rightArr[rightIndex++];
     }
-    
 
     public int [] quickSort(int [] array) {
         final long startTime = System.currentTimeMillis();
@@ -127,6 +129,7 @@ public class Sort {
         final long endTime = System.currentTimeMillis();
         final long executionTime = endTime - startTime;
         this.executionTime = executionTime;
+
         return list;
     }
 
@@ -160,13 +163,56 @@ public class Sort {
         return pivCheck + 1;
     }
     
-    public int [] heapSort(int [] array){
+    public int [] heapSort(int [] array) {
+        final long startTime = System.currentTimeMillis();
+
         int [] list = array;
-        //implement here
-        
-        
+        hSort(list);
+
+        final long endTime = System.currentTimeMillis();
+        final long executionTime = endTime - startTime;
+        this.executionTime = executionTime;
 
         return list;
+    }
+
+    private void hSort(int [] arr) {
+        int arrLength = arr.length;
+
+        for (int i = (arrLength / 2) - 1; i >= 0; i--)
+            maxHeapify(arr, arrLength, i);
+
+
+        for (int i = arrLength - 1; i >= 0; i--) {
+            int temp = arr[0];
+            arr[0] = arr[i];
+            arr[i] = temp;
+
+            maxHeapify(arr, i, 0);
+        }
+    }
+
+    private static void maxHeapify(int [] arr, int arrLength, int i) {
+        int maxIndex = i;
+        int leftIndex = 2 * i + 1;
+        int rightIndex = 2 * i + 2;
+
+        // If a left node is greater than the current node, change maxIndex.
+        if (leftIndex < arrLength && arr[leftIndex] > arr[maxIndex])
+            maxIndex = leftIndex;
+
+        // If a right node is greater than the current node, change maxIndex.
+        if (rightIndex < arrLength && arr[rightIndex] > arr[maxIndex])
+            maxIndex = rightIndex;
+
+
+        if (maxIndex != i) {
+            int swap = arr[i];
+            arr[i] = arr[maxIndex];
+            arr[maxIndex] = swap;
+
+            maxHeapify(arr, arrLength, maxIndex);
+        }
     }
 
 

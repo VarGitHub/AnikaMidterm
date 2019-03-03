@@ -17,8 +17,10 @@ public class DuplicateWord {
                 "Java is also an Island of Indonesia. " +
                 "Java is widely used language";
 
+        // Taking care of words like 'Language' & 'language' by making the string lowercase and removing periods.
         String newStr = st.toLowerCase().replace(".", "");
         List<String> list = Arrays.asList(newStr.split(" "));
+        // This set will only have unique strings. No duplicates!
         Set<String> uniqueList = new HashSet<String>(list);
 
         int totalLength = 0;

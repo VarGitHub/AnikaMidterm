@@ -7,18 +7,18 @@ import java.util.Arrays;
  */
 public class Anagram {
 
-    public static boolean areAnagram(char [] str1, char [] str2) {
-        int strOneLength = str1.length;
-        int strTwoLength = str2.length;
-
-        if (strOneLength != strTwoLength)
+    public static boolean areAnagram(String str1, String str2) {
+        if (str1.length() != str2.length())
             return false;
 
-        Arrays.sort(str1);
-        Arrays.sort(str2);
+        char [] strOne = str1.toCharArray();
+        char [] strTwo = str2.toCharArray();
 
-        for (int i = 0; i < strOneLength; i++)
-            if (str1[i] != str2[i])
+        Arrays.sort(strOne);
+        Arrays.sort(strTwo);
+
+        for (int i = 0; i < strOne.length; i++)
+            if (strOne[i] != strTwo[i])
                 return false;
 
         return true;
@@ -27,5 +27,9 @@ public class Anagram {
     public static void main(String[] args) {
         //Write a Java Program to check if the two String are Anagram. Two String are called Anagram when there is
         //same character but in different order.For example,"CAT" and "ACT", "ARMY" and "MARY".
+
+        System.out.println(areAnagram("CAT", "ACT"));
+        System.out.println(areAnagram("ARMY", "MARY"));
+        System.out.println(areAnagram("BANANA", "BANANE"));
     }
 }

@@ -9,6 +9,16 @@ public class Pattern {
 		 *
 		 */
 
+		int currNum = 100, difference = 1;
+		while(currNum >= 0) {
+			int counter = 0;
+			while (counter < 10 && currNum >= 0) {
+				System.out.print(currNum + ", ");
+				currNum -= difference;
+				counter++;
+			}
+			difference++;
+		}
 
 
 	}

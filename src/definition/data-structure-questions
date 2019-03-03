@@ -1,34 +1,95 @@
 Please answer the below Data Structure Questions:
 
 why do we need data structure?
-A.
-
+    A.  Allows different way to contain, organize and manipulate data.
 
 What are the various operations that can be performed on different Data Structures?
+    A.  empty(), size(), add(), remove()
+
 List out the areas in which data structures are applied extensively?
+    A.  Database Management System
+        Statistical analysis
+        Graphics
+
 what is an Array?
+    A.  A collection of contiguous memory.
+
 what is the difference between the Array and ArrayList?
+    A.  Array's size are fixed whereas you can expand ArrayList.
+
 what is LinkedList?
+    A.  A list of nodes where each node points to the next node in the list.
+
 How is an Array different from Linked List?
+    A.  Arrays are randomly accessible whereas you would have to traverse through a Linkedlist.
+
 what is queue?
+    A.  Data structure that is FIFO.
+
 what is stack?
+    A.  Data structure that is LIFO.
+
 what is FIFO and LIFO?
+    A.  FIFO - First in first out.
+        LIFO - Last in first out.
+
 what is the order of complexity?
+    A.  Mathematical expression representing the time and/or space complexity of an algorithm.
+
 what is the best case to search an element from an array?
+    A.  O(1).
+
 what is the worst case to search an element from an array?
+    A.  O(n)
+
 what is tree in data structure?
+    A.  A data structure that has a where each node may have left and right node.
+
 what is graph in data structure?
+    A.  A set of items connected by edges.
+
 what is the difference between the HashTable and HashMap?
-What are the major data structures used in the following areas : RDBMS, Network data model and Hierarchical data model.
+    A.  HasTable does not allow null keys whereas HashMap does.
+        HashTable is synchronized whereas HashMap is not.
+
+What are the major data structures used in the following areas:
+    RDBMS, Network data model and Hierarchical data model.
+    A.  ??????
+
 How HashMap works in java?
+    A.  Each element is a pair and the pair holds a key and its value.
+
 What is ArrayIndexOutOfBoundsException in java? When it occurs?
+    A.  Occurs during runtime when an attempt to access an index in array that doesn't exist.
+
 What are the different ways of copying an array into another array?
+    A.  Shallow copy, deep copy, or clone().
+
 What is difference between an array and a linked list?
+    A.  Arrays are randomly accessible whereas you would have to traverse through a Linkedlist.
+
 What is DFS and BFS?
+    A.  Depth-First-Search: searches down a tree before moving to the right.
+        Breadth-First-Search: searches the nodes in the level before moving to the next level.
+
 What is Recursion?
+    A.  A method calling itself.
+
 What are linear and non linear data Structures?
+    A.  Arrays, LinkedList, Stacks, Queues, Vectors are linear.
+        Trees and graphs are not linear.
+
 What is Big-(O)-notation?
+    A.  An expression that describes time and space complexity.
+
 Outlined different kind of sorting algorithm with time complexity?
+    A.  Insertion Sort - O(n^2)
+        Selection Sort - O(n^2)
+        Bubble Sort - O(n^2)
+        Bucket Sort - O(n^2)
+        Quick Sort - O(n^2)
+        Merge Sort - O(nlogn)
+        Heap Sort - O(nlogn)
 
 Draw a table with time complexity in which it will summarize all the data structure feature's advantages and disadvantages.
   a)In terms of Accessing element.

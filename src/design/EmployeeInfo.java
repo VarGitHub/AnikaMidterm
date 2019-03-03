@@ -21,6 +21,10 @@ public class EmployeeInfo {
 	 * declare few static and final fields and some non-static fields
 	 */
 	static String companyName;
+	private int employeeId;
+	private String employeeName;
+	private static Months mo;
+	private int salary;
 	
 	/*
 	 * You must implement the logic for below 2 methods and 
@@ -33,11 +37,13 @@ public class EmployeeInfo {
 	 * Must implement below constructor.
 	 */
 	public EmployeeInfo(int employeeId) {
+		this.employeeId = employeeId;
 
 	}
 
     public EmployeeInfo(String name, int employeeId) {
-		
+		this.employeeName = name;
+		this.employeeId = employeeId;
 	}
 	
 	/*
@@ -49,7 +55,7 @@ public class EmployeeInfo {
 	 * 
 	 */
 	public static int calculateEmployeeBonus(int numberOfYearsWithCompany) {
-		int total=0;
+		int total = 0;
 		return total;
 	}
 	
@@ -78,7 +84,10 @@ public class EmployeeInfo {
 	}
 	private static class DateConversion {
 
-		public DateConversion(Months months){}
+		public DateConversion(Months months){
+			mo = months;
+		}
+
 		public static String convertDate(String date) {
 			String [] extractMonth = date.split(",");
 			String givenMonth = extractMonth[0];

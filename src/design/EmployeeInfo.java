@@ -32,10 +32,11 @@ public class EmployeeInfo {
 	 * you must have multiple constructor.
 	 * Must implement below constructor.
 	 */
-	public EmployeeInfo(int employeeId){
-		
+	public EmployeeInfo(int employeeId) {
+
 	}
-    public EmployeeInfo(String name, int employeeId){
+
+    public EmployeeInfo(String name, int employeeId) {
 		
 	}
 	
@@ -47,7 +48,7 @@ public class EmployeeInfo {
 	 * So you probably need to send 2 arguments.
 	 * 
 	 */
-	public static int calculateEmployeeBonus(int numberOfYearsWithCompany){
+	public static int calculateEmployeeBonus(int numberOfYearsWithCompany) {
 		int total=0;
 		return total;
 	}

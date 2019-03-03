@@ -13,6 +13,23 @@ public class PrimeNumber {
 		 *
 		 */
 
+		int count = 1000000;
+		boolean isPrime;
+
+		System.out.print(2);
+		for (int i = 3; i < count; ++i) {
+			isPrime = true;
+			for (int j = 2; j < i; ++j) {
+				if (i % j == 0) {
+					isPrime = false;
+					break;
+				}
+			}
+
+			if (isPrime ==  true)
+				System.out.print(" " + i);
+		}
+
 	}
 
 }

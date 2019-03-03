@@ -81,6 +81,7 @@ public class UseMap {
 //				for(List<Integer> list : borough.getValue()values()){
 //					for(Integer i : list)
 //						flattenList.add(i);
+
 //				}
 
 		} catch (Exception e) {

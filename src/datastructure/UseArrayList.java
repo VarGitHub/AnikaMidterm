@@ -43,11 +43,13 @@ public class UseArrayList {
 		while(iter.hasNext())
 			System.out.print(iter.next() + " ");
 
+		System.out.println();
+
 		Collections.sort(stack);
 
 		ConnectToSqlDB connect = new ConnectToSqlDB();
 		try {
-			connect.insertDataFromIntegerArrayListToSqlTable(stack,"stack_by_arraylist", "SortingNumbers");
+			connect.insertDataFromIntegerArrayListToSqlTable(stack,"stack_by_arraylist", "sortedNums");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -94,31 +94,49 @@ public class Numbers {
 
 		connectToSqlDB.insertDataFromArrayToSqlTable(num, "heap_sort", "SortingNumbers");
 		List<String> heap_numbers = connectToSqlDB.readDataBase("heap_sort", "SortingNumbers");
-		printValue(heap_numbers);
+		// printValue(heap_numbers);
 		n = num.length;
 		randomize (num, n);
 
 
+		//////////// Bucket Sort
+		algo.bucketSort(num);
+		long bucketSortExecutionTime = algo.executionTime;
+		System.out.println("Total Execution Time of " + num.length + " numbers in Bucket Sort take: " + bucketSortExecutionTime + " milli sec");
+
+		connectToSqlDB.insertDataFromArrayToSqlTable(num, "bucket_sort", "SortingNumbers");
+		List<String> bucket_numbers = connectToSqlDB.readDataBase("bucket_sort", "SortingNumbers");
+		printValue(bucket_numbers);
+		n = num.length;
+		randomize (num, n);
 
 
+		//////////// Shell Sort
+		algo.shellSort(num);
+		long shellSortExecutionTime = algo.executionTime;
+		System.out.println("Total Execution Time of " + num.length + " numbers in Shell Sort take: " + bucketSortExecutionTime + " milli sec");
 
-
-
+		connectToSqlDB.insertDataFromArrayToSqlTable(num, "shell_sort", "SortingNumbers");
+		List<String> shell_numbers = connectToSqlDB.readDataBase("shell_sort", "SortingNumbers");
+		// printValue(shell_numbers);
+		n = num.length;
+		randomize (num, n);
 
 
 		//Come to conclusion about which Sorting Algo is better in given data set.
+		System.out.println("Heap sort is the more efficient sorting algorithm " +
+				"in terms of space and faster than the other sorting algorithms.");
 
 	}
 
 	public static void storeRandomNumbers(int [] num){
 		Random rand = new Random();
-		for(int i=0; i<num.length; i++){
+		for(int i=0; i < num.length; i++){
 			num[i] = rand.nextInt(1000000);
 		}
 	}
 
-	public static void randomize( int arr[], int n)
-	{
+	public static void randomize(int arr[], int n) {
 		Random r = new Random();
 		// Start from the last element and swap one by one. We don't
 		// need to run for the first element that's why i > 0
@@ -129,8 +147,9 @@ public class Numbers {
 			arr[j] = temp;
 		}
 	}
+
 	public static void printValue(List<String> array){
-		for(String st:array){
+		for(String st : array) {
 			System.out.println(st);
 		}
 	}

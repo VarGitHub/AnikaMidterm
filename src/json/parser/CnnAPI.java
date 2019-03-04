@@ -66,27 +66,32 @@ public class CnnAPI {
       JsonParser jsonParser = new JsonParser();
       JsonElement root = jsonParser.parse(new InputStreamReader((InputStream) request.getContent()));
       JsonObject obj = root.getAsJsonObject();
+      // Retrieving the array at index "articles" from json file.
       array = obj.get("articles").getAsJsonArray();
 
       List<Headlines> list = new ArrayList<Headlines>();
-      String source, author, title, description, tempUrl, urlToImage,publishedAt, content;
+      String source, author, title, description, tempUrl, urlToImage, publishedAt, content;
+
       for (int i = 0; i < array.size() - 1; i++) {
-         JsonObject jObj = array.get(i).getAsJsonObject();
-         JsonObject tempSource = jObj.get("source").getAsJsonObject();
-
+         JsonObject info = array.get(i).getAsJsonObject();
+         // Source has a nested object with keywords "id" and "name". I just need "name".
+         JsonObject tempSource = info.get("source").getAsJsonObject();
          source = tempSource.get("name").toString();
-         author = jObj.get("author").toString();
-         title = jObj.get("title").toString();
-         description = jObj.get("description").toString();
-         tempUrl = jObj.get("url").toString();
-         urlToImage = jObj.get("urlToImage").toString();
-         publishedAt = jObj.get("publishedAt").toString();
-         content = jObj.get("content").toString();
 
+         author = info.get("author").toString();
+         title = info.get("title").toString();
+         description = info.get("description").toString();
+         tempUrl = info.get("url").toString();
+         urlToImage = info.get("urlToImage").toString();
+         publishedAt = info.get("publishedAt").toString();
+         content = info.get("content").toString();
+
+         // Creating Headlines object and adding it to the Headlines ArrayList.
          list.add(new Headlines(source, author, title, description, tempUrl, urlToImage, publishedAt, content));
       }
 
-      for(Headlines entry : list){
+      // Printing out all of the entries in list.
+      for (Headlines entry : list) {
          System.out.println("Source: " + entry.getSource() + "\nAuthor: " + entry.getAuthor() + "\nTitle: "
                  + entry.getTitle() + "\nDescription: " + entry.getDescription() + "\nUrl: " + entry.getUrl()
                  + "\nUrl to Image: " + entry.getUrlToImage() + "\nPublished At: " + entry.getPublishedAt()

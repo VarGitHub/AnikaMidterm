@@ -1,7 +1,6 @@
 package math.problems;
 
 public class MakePyramid {
-
    public static void printPyramid(int n) {
       for (int i = 0; i < n; i++) {
          for (int j = n - i; j > 1; j--)
@@ -26,9 +25,6 @@ public class MakePyramid {
                          * * * * * *
 
         */
-
          printPyramid(6);
-
-
         }
   }

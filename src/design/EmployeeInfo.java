@@ -2,172 +2,186 @@ package design;
 
 import java.util.Scanner;
 
-public class EmployeeInfo extends AbstractEmployee {
-	
- /*This class can be implemented from Employee interface then add additional methods in EmployeeInfo class.
- * Also, Employee interface can be implemented into an abstract class.So create an Abstract class
- * then inherit that abstract class into EmployeeInfo class.Once you done with designing EmployeeInfo class,
- * go to FortuneEmployee class to apply all the fields and attributes.
- * 
- * Important: YOU MUST USE the 
- * OOP(abstraction,Encapsulation, Inheritance and Polymorphism) concepts in every level possible.
- * Use all kind of keywords(super,this,static,final........)
- * Implement Nested class.
- * Use Exception Handling.
- *
- */
+public abstract class EmployeeInfo implements Employee {
 
-	/*
-	 * declare few static and final fields and some non-static fields
-	 */
-	static String companyName;
-	private int employeeId;
-	private String employeeName;
-	private static Months mo;
-	private int salary;
-	
-	/*
-	 * You must implement the logic for below 2 methods and 
-	 * following 2 methods are prototype as well for other methods need to be design,
-	 * as you will come up with the new ideas.
-	 */
-	
-	/*
-	 * you must have multiple constructor.
-	 * Must implement below constructor.
-	 */
-	public EmployeeInfo(int employeeId) {
-		this.employeeId = employeeId;
+   /*This class can be implemented from Employee interface then add additional methods in EmployeeInfo class.
+    * Also, Employee interface can be implemented into an abstract class.So create an Abstract class
+    * then inherit that abstract class into EmployeeInfo class.Once you done with designing EmployeeInfo class,
+    * go to FortuneEmployee class to apply all the fields and attributes.
+    *
+    * Important: YOU MUST USE the
+    * OOP(abstraction,Encapsulation, Inheritance and Polymorphism) concepts in every level possible.
+    * Use all kind of keywords(super,this,static,final........)
+    * Implement Nested class.
+    * Use Exception Handling.
+    *
+    */
 
-	}
+   /*
+    * declare few static and final fields and some non-static fields
+    */
+   private static Months mo;
+   final String companyName = "AB&C Co.";
+   protected int employeeId;
+   protected String employeeName;
+   protected static int baseSalary;
+   protected String departmentName = "General";
+   static Performance performance = Performance.NOTDETERMINED;
 
-    public EmployeeInfo(String name, int employeeId) {
-		this.employeeName = name;
-		this.employeeId = employeeId;
-	}
-	
-	/*
-	 * This methods should calculate Employee bonus based on salary and performance.
-	 * Then it will return the total yearly bonus. So you need to implement the logic.
-	 * Hints: 10% of the salary for best performance, 8% of the salary for average performance and so on. 
-	 * You can set arbitrary number for performance.
-	 * So you probably need to send 2 arguments.
-	 * 
-	 */
-	public static int calculateEmployeeBonus(int numberOfYearsWithCompany) {
-		int total = 0;
-		return total;
-	}
-	
-	/*
-	 * This methods should calculate Employee Pension based on salary and numbers of years with the company.
-	 * Then it will return the total pension. So you need to implement the logic.
-	 * Hints: pension will be 5% of the salary for 1 year, 10% for 2 years with the company and so on.
-	 * 
-	 */
-	public static int calculateEmployeePension(){
-		int total=0;
-		Scanner sc  = new Scanner(System.in);
-		System.out.println("Please enter start date in format (example: May,2015): ");
-		String joiningDate = sc.nextLine();
-		System.out.println("Please enter today's date in format (example: August,2017): ");
-		String todaysDate = sc.nextLine();
-        String convertedJoiningDate = DateConversion.convertDate(joiningDate);
-        String convertedTodaysDate = DateConversion.convertDate(todaysDate);
+   /*
+    * You must implement the logic for below 2 methods and
+    * following 2 methods are prototype as well for other methods need to be design,
+    * as you will come up with the new ideas.
+    */
 
-        //implement numbers of year from above two dates
-		//Calculate pension
+   /*
+    * you must have multiple constructor.
+    * Must implement below constructor.
+    */
+   public EmployeeInfo(int employeeId) {
+      this.employeeId = employeeId;
+   }
 
+   public EmployeeInfo(String name, int employeeId) {
+      this.employeeName = name;
+      this.employeeId = employeeId;
+   }
 
+   public EmployeeInfo(String name, int employeeId, int baseSalary) {
+      this.employeeName = name;
+      this.employeeId = employeeId;
+      this.baseSalary = baseSalary;
+   }
 
-		return total;
-	}
+   public void setBaseSalary(int newSal) {
+      this.baseSalary = newSal;
+   }
 
-	@Override
-	public int employeeId() {
-		return 0;
-	}
+   public int employeeId() {
+      return employeeId;
+   }
 
-	@Override
-	public String employeeName() {
-		return null;
-	}
+   public String employeeName() {
+      return employeeName;
+   }
 
-	@Override
-	public void assignDepartment() {
+   public String getDepartmentName() {
+      return departmentName;
+   }
 
-	}
+   public abstract int getDepartmentFloor();
 
-	@Override
-	public int calculateSalary() {
-		return 0;
-	}
+   public abstract void setPerformance(String perform);
 
-	@Override
-	public void benefitLayout() {
+   public int calculateTotalSalary(int numberOfYearsWithCompany) {
+      return baseSalary + calculateEmployeeBonus(numberOfYearsWithCompany);
+   }
 
-	}
+   /*
+    * This methods should calculate Employee bonus based on salary and performance.
+    * Then it will return the total yearly bonus. So you need to implement the logic.
+    * Hints: 10% of the salary for best performance, 8% of the salary for average performance and so on.
+    * You can set arbitrary number for performance.
+    * So you probably need to send 2 arguments.
+    *
+    */
+   private static int calculateEmployeeBonus(int numberOfYearsWithCompany) {
+      return (int) (baseSalary * performance.getBonusPercentage());
+   }
 
-	private static class DateConversion {
+   /*
+    * This methods should calculate Employee Pension based on salary and numbers of years with the company.
+    * Then it will return the total pension. So you need to implement the logic.
+    * Hints: pension will be 5% of the salary for 1 year, 10% for 2 years with the company and so on.
+    *
+    */
+   public static int calculateEmployeePension() {
+      Scanner sc = new Scanner(System.in);
+      System.out.println("Please enter start date in format (example: May,2015): ");
+      String joiningDate = sc.nextLine();
+      System.out.println("Please enter today's date in format (example: August,2017): ");
+      String todaysDate = sc.nextLine();
+      String convertedJoiningDate = DateConversion.convertDate(joiningDate);
+      String convertedTodaysDate = DateConversion.convertDate(todaysDate);
 
-		public DateConversion(Months months){
-			mo = months;
-		}
+      //implement numbers of year from above two dates
+      //Calculate pension
 
-		public static String convertDate(String date) {
-			String [] extractMonth = date.split(",");
-			String givenMonth = extractMonth[0];
-			int monthDate = whichMonth(givenMonth);
-			String actualDate = monthDate + "/" + extractMonth[1];
-			return actualDate;
-		}
+      int startYear = 0, currYear = 0;
 
-		public static int whichMonth(String givenMonth) {
-			Months months = Months.valueOf(givenMonth);
-			int date = 0;
-			switch (months) {
-				case January:
-					date = 1;
-					break;
-				case February:
-					date = 2;
-					break;
-				case March:
-					date = 3;
-					break;
-				case April:
-					date = 4;
-					break;
-				case May:
-					date = 5;
-					break;
-				case June:
-					date = 6;
-					break;
-				case July:
-					date = 1;
-					break;
-				case August:
-					date = 1;
-					break;
-				case September:
-					date = 1;
-					break;
-				case October:
-					date = 1;
-					break;
-				case November:
-					date = 1;
-					break;
-				case December:
-					date = 1;
-					break;
-				default:
-					date = 0;
-					break;
-			}
-			return date;
+      try {
+         // Index 1 of both arrays have the year. Turn into int.
+         startYear = Integer.parseInt(convertedJoiningDate.split("/")[1]);
+         currYear = Integer.parseInt(convertedTodaysDate.split("/")[1]);
+      } catch (ArrayIndexOutOfBoundsException e) {
+         e.printStackTrace();
+      }
 
-		}
-	}
+      int numOfYearsWorkingAtCompany = currYear - startYear;
+
+      return (int) (baseSalary * (numOfYearsWorkingAtCompany * 5.0 / 100.0));
+   }
+
+   ///////// Static nested class.
+   private static class DateConversion {
+      public DateConversion(Months months) {
+         mo = months;
+      }
+
+      public static String convertDate(String date) {
+         String[] extractMonth = date.split(",");
+         String givenMonth = extractMonth[0];
+         int monthDate = whichMonth(givenMonth);
+
+         return monthDate + "/" + extractMonth[1];
+      }
+
+      public static int whichMonth(String givenMonth) {
+         Months months = Months.valueOf(givenMonth);
+         int date = 0;
+         switch (months) {
+            case January:
+               date = 1;
+               break;
+            case February:
+               date = 2;
+               break;
+            case March:
+               date = 3;
+               break;
+            case April:
+               date = 4;
+               break;
+            case May:
+               date = 5;
+               break;
+            case June:
+               date = 6;
+               break;
+            case July:
+               date = 7;
+               break;
+            case August:
+               date = 8;
+               break;
+            case September:
+               date = 9;
+               break;
+            case October:
+               date = 10;
+               break;
+            case November:
+               date = 11;
+               break;
+            case December:
+               date = 12;
+               break;
+            default:
+               date = 0;
+               break;
+         }
+         return date;
+
+      }
+   }
 }

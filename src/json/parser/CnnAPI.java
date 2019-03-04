@@ -90,7 +90,7 @@ public class CnnAPI {
          System.out.println("Source: " + entry.getSource() + "\nAuthor: " + entry.getAuthor() + "\nTitle: "
                  + entry.getTitle() + "\nDescription: " + entry.getDescription() + "\nUrl: " + entry.getUrl()
                  + "\nUrl to Image: " + entry.getUrlToImage() + "\nPublished At: " + entry.getPublishedAt()
-                 + "\nContent: " + entry.getContent() + "\n ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+                 + "\nContent: " + entry.getContent() + "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
       }
 
    }

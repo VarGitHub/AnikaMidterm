@@ -17,7 +17,7 @@ public class FortuneEmployee {
       System.out.println(financeEmployee.calculateTotalSalary(3));
       financeEmployee.setPerformance("average");
       System.out.println(financeEmployee.calculateTotalSalary(3));
-      // System.out.println(EmployeeInfo.calculateEmployeePension());
+      System.out.println(EmployeeInfo.calculateEmployeePension());
 
       EmployeeInfo hrEmployee = new HREmployee("David", 253, 40000);
       hrEmployee.setBaseSalary(45000);
